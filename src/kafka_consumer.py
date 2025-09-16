@@ -2,7 +2,7 @@ import json
 from kafka import KafkaConsumer
 
 # Configuration
-KAFKA_BROKER = 'localhost:9092'  
+KAFKA_BROKER = 'localhost:9092'
 CONSUMER_GROUP_ID = 'social-media-monitor-group'
 TOPICS = ['posts', 'comments', 'emojis']
 
@@ -12,7 +12,7 @@ def create_consumer():
         *TOPICS,
         bootstrap_servers=[KAFKA_BROKER],
         group_id=CONSUMER_GROUP_ID,
-        auto_offset_reset='earliest', 
+        auto_offset_reset='earliest',
         value_deserializer=lambda x: json.loads(x.decode('utf-8'))
     )
 
